@@ -1,14 +1,11 @@
 version: "4.0"
 services:
-    zabbix-proxy-v4:
-        image: azcorptechbr/azmon-proxy5:latest
-        container_name: azmon-proxy5
-        hostname: azmon-proxy5
+    azmon-proxy64:
+        image: azcorptechbr/azmon-proxy-6.4:latest
+        container_name: azmon-proxy64
+        hostname: azmon-proxy
         ports:
             - $IP:$ZBX_SERVER_PORT:$ZBX_SERVER_PORT
-        cap_add: ['NET_ADMIN']
-        devices:
-            - /dev/net/tun
         environment:
             - ZBX_HOSTNAME=$ZBX_HOSTNAME
             - ZBX_SERVER_HOST=$ZBX_SERVER_HOST
@@ -41,10 +38,10 @@ services:
             - /opt/azcorp/zabbix-proxy/tnsnames.ora:/usr/lib/oracle/12.1/client64/network/admin/tnsnames.ora
             - /opt/azcorp/zabbix-proxy/tls.psk:/var/lib/zabbix/enc/tls.psk
             - /usr/share/snmp/mibs:/usr/share/snmp/mibs
-            - /etc/odbc.ini:/etc/odbc.ini
+            #- /etc/odbc.ini:/etc/odbc.ini
             - /etc/localtime:/etc/localtime:ro
-            - /etc/hosts:/etc/hosts
-#            - /etc/resolv.conf:/etc/resolv.conf
+            - /etc/hosts:/etc/hosts:ro
+            #- /etc/resolv.conf:/etc/resolv.conf
         restart: always
         networks:
            zbx-network:
