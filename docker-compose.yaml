@@ -2,7 +2,7 @@
 version: "3.0"
 services:
   zabbix-proxy:
-    image: azcorptechbr/zabbix-proxy-6.4.13
+    image: azcorptechbr/azmon-proxy-6.4.13:latest
     container_name: zabbix-proxy
     hostname: zabbix-proxy
     ports:
