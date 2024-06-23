@@ -57,7 +57,7 @@ services:
       - /opt/azcorp/zabbix-proxy/scripts/externalscripts:/usr/lib/zabbix/externalscripts:ro
       - /opt/azcorp/zabbix-proxy/scripts/alertscripts:/usr/lib/zabbix/alertscripts
       - /opt/azcorp/zabbix-proxy/tls.psk:/var/lib/zabbix/enc/tls.psk
-      - /etc/odbc.ini:/etc/odbc.ini
+      #- /etc/odbc.ini:/etc/odbc.ini
       - /etc/localtime:/etc/localtime:ro
       - /etc/hosts:/etc/hosts:ro
     restart: unless-stopped
