@@ -79,6 +79,8 @@ services:
     volumes:
       - /:/rootfs:ro
       - /var/run:/var/run
+      - /etc/timezone:/etc/timezone:ro      
+      - /etc/localtime:/etc/localtime:ro
     privileged: true
     networks:
       zbx-network:
