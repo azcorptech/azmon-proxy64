@@ -1,8 +1,7 @@
 ---
-version: "3.0"
 services:
   zabbix-proxy:
-    image: azcorptechbr/azmon-proxy-6.4.13:latest
+    image: azcorptechbr/azmon-proxy-7.0.3:latest
     container_name: zabbix-proxy
     hostname: zabbix-proxy
     ports:
@@ -52,7 +51,7 @@ services:
       - ZBX_UNREACHABLEDELAY=$ZBX_UNREACHABLEDELAY
       - ZBX_LOGSLOWQUERIES=$ZBX_LOGSLOWQUERIES
       - NLS_NUMERIC_CHARACTERS= '.,'
-      - TNS_ADMIN=/usr/lib/oracle/12.1/client64/network/admin
+#      - TNS_ADMIN=/usr/lib/oracle/12.1/client64/network/admin
     volumes:
       - /opt/azcorp/zabbix-proxy/scripts/externalscripts:/usr/lib/zabbix/externalscripts:ro
       - /opt/azcorp/zabbix-proxy/scripts/alertscripts:/usr/lib/zabbix/alertscripts
@@ -66,7 +65,7 @@ services:
       zbx-network:
         ipv4_address: $IP_CONTAINER
   zabbix-agent:
-    image: zabbix/zabbix-agent:latest
+    image: zabbix/zabbix-agent:7.0.3-ubuntu
     container_name: zabbix-agent
     restart: unless-stopped
     depends_on:
