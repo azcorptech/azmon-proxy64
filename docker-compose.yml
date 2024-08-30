@@ -50,8 +50,10 @@ services:
       - ZBX_UNAVAILABLEDELAY=$ZBX_UNAVAILABLEDELAY
       - ZBX_UNREACHABLEDELAY=$ZBX_UNREACHABLEDELAY
       - ZBX_LOGSLOWQUERIES=$ZBX_LOGSLOWQUERIES
-      - NLS_NUMERIC_CHARACTERS= '.,'
-#      - TNS_ADMIN=/usr/lib/oracle/12.1/client64/network/admin
+      - NLS_NUMERIC_CHARACTERS='.,'
+      - LD_LIBRARY_PATH=/opt/oracle/instantclient_23_5
+      - PATH=$PATH:/opt/oracle/instantclient_23_5
+      - TNS_ADMIN=/opt/oracle/instantclient_23_5/network/admin
     volumes:
       - /opt/azcorp/zabbix-proxy/scripts/externalscripts:/usr/lib/zabbix/externalscripts:ro
       - /opt/azcorp/zabbix-proxy/scripts/alertscripts:/usr/lib/zabbix/alertscripts
